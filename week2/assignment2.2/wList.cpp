@@ -11,7 +11,7 @@ list<string> * buildList() {
         user_input += " ";
         for (auto x : user_input) {
             if (isspace(x)) {
-                (*res).push_back(temp);
+                res->push_back(temp);
                 temp.clear();
             }
             else {
