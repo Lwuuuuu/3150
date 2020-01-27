@@ -21,11 +21,3 @@ list<string> * buildList() {
     }
     return res;
 }
-
-int main() {
-    list<string> * res = buildList();
-    for(auto x : *res)
-        cout << x << endl;
-    delete res;
-    return 0;
-}
