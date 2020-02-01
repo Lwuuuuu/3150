@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <string>
 #include <sstream> 
 using namespace std;
 
@@ -9,6 +10,19 @@ using namespace std;
 static void ReadIntsFromFile(const char *filename, vector<int> &listNumbers)
 {
   // Your code here
+  ifstream ipt(filename);
+  string temp;
+  char c;
+  while (ipt.get(c)) {
+    if (isspace(c)) {
+      listNumbers.push_back(stoi(temp));
+      temp.clear();
+    }
+    else 
+      temp += c;
+  }
+  listNumbers.push_back(stoi(temp));
+  ipt.close();
 }
 
 // main function
@@ -29,11 +43,9 @@ int main( int argc, const char* argv[] )
   // read in integers from the seconf file
   vector<int> listTargets;
   ReadIntsFromFile( argv[2], listTargets );
-
   // 
   vector<bool> listResults;
   EC2SUM(listNumbers, listTargets, listResults);
-
   // dump out results
   cout << "Number of integers in list: " << listNumbers.size() << endl;
   cout << "Nummber of integers to search: " << listTargets.size() << endl;
