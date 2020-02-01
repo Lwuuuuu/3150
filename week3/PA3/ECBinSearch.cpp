@@ -40,4 +40,3 @@ int ECBinarySearch(const vector<int> &listNumbers, int value)
   }   
   return -1;
 }
-

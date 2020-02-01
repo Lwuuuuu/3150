@@ -11,17 +11,21 @@ static void ReadIntsFromFile(const char *filename, vector<int> &listNumbers)
 {
   // Your code here
   ifstream ipt(filename);
-  string temp;
-  char c;
-  while (ipt.get(c)) {
-    if (isspace(c)) {
-      listNumbers.push_back(stoi(temp));
-      temp.clear();
+  string user_input;
+  while (getline(ipt, user_input) && user_input.length() > 0) {
+    string temp;
+    user_input += " ";
+    for (auto x : user_input) {
+        if (isspace(x) && temp.length() != 0) {
+          listNumbers.push_back(stoi(temp));
+          temp.clear();
+        }
+        else {
+          if(!isspace(x))
+            temp += x;
+        }
     }
-    else 
-      temp += c;
   }
-  listNumbers.push_back(stoi(temp));
   ipt.close();
 }
 
