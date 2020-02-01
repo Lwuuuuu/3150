@@ -1,6 +1,5 @@
 #include "wList.H"
 #include <iostream>
-// #include "wList.cpp"
 using namespace std;
 int main()
 {
