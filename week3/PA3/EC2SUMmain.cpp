@@ -10,23 +10,27 @@ using namespace std;
 static void ReadIntsFromFile(const char *filename, vector<int> &listNumbers)
 {
   // Your code here
-  ifstream ipt(filename);
-  string user_input;
-  while (getline(ipt, user_input) && user_input.length() > 0) {
-    string temp;
-    user_input += " ";
-    for (auto x : user_input) {
-        if (isspace(x) && temp.length() != 0) {
-          listNumbers.push_back(stoi(temp));
-          temp.clear();
-        }
-        else {
-          if(!isspace(x))
-            temp += x;
-        }
+  ifstream ipt(filename); //input stream 
+  if ipt.is_open() {
+    string user_input;
+    while (getline(ipt, user_input) && user_input.length() > 0) { //Gets a line from the file 
+      string temp;
+      user_input += " "; //Add whitespace buffer so last number will not be missed
+      for (auto x : user_input) {
+          if (isspace(x) && temp.length() != 0) { //Whitespace found, means a number has been parsed, check length to disallow string of whitespaces
+            listNumbers.push_back(stoi(temp)); //Convert to integer
+            temp.clear(); //Clear for next number
+          }
+          else {
+            if(!isspace(x)) //Prevents accumulation of whitespaces in temp string
+              temp += x;
+          }
+      }
     }
+    ipt.close();
   }
-  ipt.close();
+  else 
+    cout << "Unable to open file." << endl;
 }
 
 // main function
