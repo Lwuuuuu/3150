@@ -11,7 +11,7 @@ static void ReadIntsFromFile(const char *filename, vector<int> &listNumbers)
 {
   // Your code here
   ifstream ipt(filename); //input stream 
-  if ipt.is_open() {
+  if (ipt.is_open()) {
     string user_input;
     while (getline(ipt, user_input) && user_input.length() > 0) { //Gets a line from the file 
       string temp;
