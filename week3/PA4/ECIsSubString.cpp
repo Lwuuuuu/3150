@@ -9,6 +9,8 @@ bool IsSubString(const vector<char> &strInput, const vector<char> &strPattern )
 // Result: strConcatTo passed to as input should contain the Concatenated string.
   bool found_subString = false;
   int k = strPattern.size();
+  if ((k == 0) && (strInput.size() != 0))
+    return false;
   for (long unsigned int i = 0; i < strInput.size() - k + 1; ++i) {
     vector<char> subString(strInput.begin()+i, strInput.begin()+i+k);
     if (subString == strPattern) {

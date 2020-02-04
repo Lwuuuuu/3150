@@ -19,7 +19,7 @@ void printvectchar(vector<char> &vc)
 void test_DistinctSubstring(void)
     {
     set<vector<char>> subStrings;
-    int num=2;
+    int num=1;
     string s1="string1";
     vector<char> string1(s1.begin(),s1.end());
     GetDistinctSubstrings(string1,num,subStrings);
@@ -32,6 +32,7 @@ void test_DistinctSubstring(void)
       i++;
     }
     cout<<endl;
+    // cout  << "Size of Substring Vector for DistinctSubString : " << subStrings.size() << endl;
     }
 
 void test_concat(void)
